@@ -2,6 +2,7 @@ package org.hopto.demo.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +13,12 @@ public class mainApp implements ApplicationRunner {
     
     public static void main(String[] args) {
         SpringApplication.run(mainApp.class, args);
-        System.out.println("Aplicação iniciada com sucesso!");
+        
 
+    }
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        // startup logic can be placed here
+        System.out.println("Aplicação iniciada com sucesso!");
     }
     }
