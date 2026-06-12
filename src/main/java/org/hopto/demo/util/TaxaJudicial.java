@@ -8,13 +8,14 @@ public class TaxaJudicial {
     }
 
     public double adicionarTaxa(String estado){
-        if estado.toUpperCase().equals("SP")){
+        if (estado.toUpperCase().equals("SP")){
             return 0.1;
         } else if (estado.toUpperCase().equals("RJ")){
             return 0.15;
         } else {
             return 0.05;
         }}}
+        
         
 
     

@@ -20,21 +20,4 @@ public class CasoJudicial {
 
     }
 
-    public CustoJudicial getCustoJudicial() {
-        return custoJudicial;
-    }
-
-    public void setCustoJudicial(CustoJudicial custoJudicial) {
-        this.custoJudicial = custoJudicial;
-    }
-
-    public TaxaJudicial getTaxaJudicial() {
-        return taxaJudicial;
-    }
-
-    public void setTaxaJudicial(TaxaJudicial taxaJudicial) {
-        this.taxaJudicial = taxaJudicial;
-    }   
-    
-
 }
