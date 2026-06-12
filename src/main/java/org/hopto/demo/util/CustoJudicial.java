@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustoJudicial {
+
+    
     public double adicionarCusto(int ano)
     {
         if (ano < 2000){
