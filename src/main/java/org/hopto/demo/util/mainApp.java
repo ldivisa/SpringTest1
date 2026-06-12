@@ -1,21 +1,19 @@
 package org.hopto.demo.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-public class MainApp implements ApplicationRunner {
+public class mainApp implements ApplicationRunner {
     private final  CasoJudicial casoJudicial;
 
-   MainApp(CasoJudicial casoJudicial) {
+   mainApp(CasoJudicial casoJudicial) {
       this.casoJudicial = casoJudicial;
    }
 public static void main(String[] args) {
-        SpringApplication.run(MainApp.class, args);
+        SpringApplication.run(mainApp.class, args);
     }
 
     @Override
