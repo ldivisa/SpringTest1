@@ -1,8 +1,6 @@
 package org.hopto.demo.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +14,7 @@ public static void main(String[] args) {
         SpringApplication.run(mainApp.class, args);
     }
 @Override
-    public void run(String[] args) throws Exception {
+    public void run(String... args) throws Exception {
         double custoFinal = casoJudicial.finalizarCusto(10000, "SP",2005);
         System.out.println("Custo final do caso judicial: " + custoFinal);
     }
