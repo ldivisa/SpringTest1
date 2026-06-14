@@ -38,6 +38,14 @@ public class CasoJudicialController {
 
     @PostMapping
     public ResponseEntity<CasoJudicial> criarCaso(@RequestBody CasoJudicial caso) {
+        //if service.existeCaso(caso.getId())) {
+          //  return ResponseEntity.status(HttpStatus.CONFLICT).build();
+       // -- codigo gerado pelo lombok -vamos usar a referencia do curso que aborda o uso de exceptions
+       //return ResponseEntity.status(HttpStatus.CONFLICT).build();
+       //}
+        if (service.existeCaso(caso){
+        throw new CasoDuplicadoException("Caso com ID " + caso.getId() + " já existe.");
+        }
         CasoJudicial novoCaso = service.criarCaso(caso);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCaso);
     }
