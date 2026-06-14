@@ -1,5 +1,7 @@
-package org.hopto.demo.util;
+package org.hopto;
 
+
+import org.hopto.demo.util.CasoJudicialController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class mainApp implements  CommandLineRunner{
  @Autowired
-    private CasoJudicial casoJudicial;
+    private CasoJudicialController casoJudicial;
 
 public static void main(String[] args) {
         SpringApplication.run(mainApp.class, args);
