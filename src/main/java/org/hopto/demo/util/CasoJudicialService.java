@@ -1,26 +1,28 @@
 package org.hopto.demo.util;
-import java.util.List;
 
-import org.hopto.demo.CasoJudicialRepository;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CasoJudicialService {
-    private final CasoJudicialRepository repository;
 
+    private List<CasoJudicial> casos;
+    
     @Autowired
-    public CasoJudicialService(CasoJudicialRepository repository) {
-        this.repository = repository;
+    public CasoJudicialService() {
+        casos = new ArrayList<CasoJudicial>(Arrays.asList(
+            new CasoJudicial(1000.0, "RJ", 2111), 
+            new CasoJudicial(2000.0, "SP", 2005),
+            new CasoJudicial(3000.0, "MG", 1995)            
+        
+        ));
     }
-    public List<CasoJudicialController> getTodosOsCasos() {
-        return repository.findAll();
+    public List<CasoJudicial> getTodosOsCasos() {
+        return casos;
     }
-    public CasoJudicialController criarCaso(CasoJudicialController caso) {
-        return repository.save(caso);
-    }
-	public void atualizarCustoCaso(Long id, double novoValor) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'atualizarCustoCaso'");
-	}
+    
+	
 }

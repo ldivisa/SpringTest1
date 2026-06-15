@@ -2,7 +2,7 @@ package org.hopto.demo.util;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CasoJudicial {
     private CustoJudicial custoJudicial;
     private TaxaJudicial taxaJudicial;
