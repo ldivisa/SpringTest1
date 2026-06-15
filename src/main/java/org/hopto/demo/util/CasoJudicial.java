@@ -1,15 +1,15 @@
 package org.hopto.demo.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class CasoJudicial {
     private double custo;
     private String estado;
     private int anoJulgamento;
     private CustoJudicial custoJudicial;
     private TaxaJudicial taxaJudicial;  
+    
 @Autowired
 public CasoJudicial(double custo, String estado, int anoJulgamento) {
     this.custo = custo;
