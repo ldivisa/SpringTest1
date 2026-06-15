@@ -36,7 +36,7 @@ public ResponseEntity<CasoJudicial> getCasoPorId(@PathVariable Long id) {
             return ResponseEntity.notFound().build();
         }
     }
-@PutMapping
+@PostMapping
 public ResponseEntity<Void> adicionarCaso(CasoJudicial caso) {
       if (caso == null) {
             return ResponseEntity.badRequest().build();
