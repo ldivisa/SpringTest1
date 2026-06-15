@@ -28,7 +28,10 @@ public class CasoJudicialService {
         return casos.stream()
                     .filter(caso -> caso.getId()==(id))
                     .findFirst()
-                    .orElse(null);       
-    
+                    .orElse(null);           
     }
+    
+    public void adicionarCaso(CasoJudicial caso) {
+        casos.add(caso);
+    }   
 }
