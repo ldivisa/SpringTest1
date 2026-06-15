@@ -13,17 +13,22 @@ public class CasoJudicialService {
     
     public CasoJudicialService() {
         casos = new ArrayList<>(Arrays.asList(
-            new CasoJudicial(1000.0, "RJ", 2111), 
-            new CasoJudicial(2000.0, "SP", 2005),
-            new CasoJudicial(3000.0, "MG", 1995) ,
-            new CasoJudicial(4000.0, "BA", 2015)           
+            new CasoJudicial(1,1000.0, "RJ", 2111), 
+            new CasoJudicial(2,2000.0, "SP", 2005),
+            new CasoJudicial(3,3000.0, "MG", 1995) ,
+            new CasoJudicial(4,4000.0, "BA", 2015)           
         
         ));
     }
     public ArrayList<CasoJudicial> getTodosOsCasos() {
               return casos;
-        
-    }
+     }
+
+    public CasoJudicial getCasoPorId(Long id) {
+        return casos.stream()
+                    .filter(caso -> caso.getId()==(id))
+                    .findFirst()
+                    .orElse(null);       
     
-	
+    }
 }

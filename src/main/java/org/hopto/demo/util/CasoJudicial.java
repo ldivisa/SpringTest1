@@ -2,6 +2,7 @@ package org.hopto.demo.util;
 
 
 public class CasoJudicial {
+    private long id;
     private double valor;
     private int ano;
     private double custo;
@@ -11,7 +12,8 @@ public class CasoJudicial {
     private TaxaJudicial taxaJudicial;  
     
 
-public CasoJudicial(double custo, String estado, int anoJulgamento) {
+public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
+    this.id=id;
     this.custo = custo;
     this.estado = estado;
     this.anoJulgamento = anoJulgamento;
@@ -28,6 +30,7 @@ public double finalizarCusto(double custo, String estado, int anoJulgamento) {
 
  
     // Getters (Essenciais para conversores de JSON lerem os dados)
+    public long getId() { return id; }  
     public double getCusto() { return custo; }
     public String getEstado() { return estado; }
     public int getAnoJulgamento() { return anoJulgamento; }
