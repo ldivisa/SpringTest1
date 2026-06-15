@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/casos")
-
 public class CasoJudicialController {
+    
     private final CasoJudicialService service;
 
     @Autowired
