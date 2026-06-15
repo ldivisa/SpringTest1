@@ -1,6 +1,7 @@
 package org.hopto.demo.util;
 
 import java.util.List;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,8 @@ public CasoJudicialController(CasoJudicialService service) {
     }
 
 @GetMapping
-public ResponseEntity<List<CasoJudicial>> getTodosOsCasos() {
-        List<CasoJudicial> casos = service.getTodosOsCasos();
+public ResponseEntity<ArrayList<CasoJudicial>> getTodosOsCasos() {
+        ArrayList<CasoJudicial> casos = service.getTodosOsCasos();
         return ResponseEntity.ok(casos);
 }    
 }

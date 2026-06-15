@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CasoJudicialService {
 
-    private List<CasoJudicial> casos;
+    private ArrayList<CasoJudicial> casos;
     
     
     public CasoJudicialService() {
@@ -20,8 +20,16 @@ public class CasoJudicialService {
         
         ));
     }
-    public List<CasoJudicial> getTodosOsCasos() {
-        return casos;
+    public ArrayList<CasoJudicial> getTodosOsCasos() {
+        casos = new ArrayList<CasoJudicial>(Arrays.asList(
+            new CasoJudicial(1000.0, "RJ", 2111), 
+            new CasoJudicial(2000.0, "SP", 2005),
+            new CasoJudicial(3000.0, "MG", 1995) ,
+            new CasoJudicial(4000.0, "BA", 2015)           
+   
+        )
+        );
+              return casos;
     }
     
 	
