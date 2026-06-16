@@ -44,5 +44,7 @@ public double finalizarCusto(double custo, String estado, int anoJulgamento) {
                 ", estado='" + estado + '\'' +
                 ", ano=" + ano +
                 '}';
-}
+    }
+
+    
 }
