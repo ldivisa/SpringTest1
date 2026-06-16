@@ -33,5 +33,10 @@ public class CasoJudicialService {
     public void adicionarCaso(CasoJudicial caso){
          casos.add(caso);
     }   
+
+    public void substituirCaso(Long id, CasoJudicial casoAtualizado){
+        casos.remove(getCasoPorId(id));
+        casos.add(casoAtualizado);
+    }
 }
     
