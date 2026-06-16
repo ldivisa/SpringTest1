@@ -30,7 +30,7 @@ public class CasoJudicialService {
                     .orElse(null);           
     }
     
-    public void adicionarCaso(CasoJudicial caso)
+    public void adicionarCaso(CasoJudicial caso){
          casos.add(caso);
     }   
 }
