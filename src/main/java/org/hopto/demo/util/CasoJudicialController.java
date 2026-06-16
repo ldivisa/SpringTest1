@@ -67,5 +67,17 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         service.deletarCaso(ids);
         return ResponseEntity.noContent().build();
         }
+
+    @RequestMapping(value = "/api/casos/{ids}", method = RequestMethod.PATCH)   
+        public ResponseEntity<CasoJudicial> finalizarCaso(@PathVariable Long ids, @RequestBody CasoJudicial casoAtualizado){
+        CasoJudicial caso = service.getCasoPorId(ids);
+        if (caso != null) {
+            double custoFinalizado = caso.finalizarCusto(casoAtualizado.getCusto(), casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
+            casoAtualizado = new CasoJudicial(caso.getId(), custoFinalizado, casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
+            service.substituirCaso(ids, casoAtualizado);
+            return ResponseEntity.ok(casoAtualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }   
     }
 
