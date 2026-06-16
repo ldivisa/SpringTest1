@@ -34,12 +34,7 @@ public double finalizarCusto(double custo, String estado, int anoJulgamento) {
     public double getCusto() { return custo; }
     public String getEstado() { return estado; }
     public int getAnoJulgamento() { return anoJulgamento; }
-
-
-    public void add(CasoJudicial caso) {
-        casos.add(caso);
-        
-    }
+ 
 
     // toString (Essencial se você estiver usando System.out.println)
     @Override
