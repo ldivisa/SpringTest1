@@ -3,6 +3,7 @@ package org.hopto.demo.util;
 import java.net.URI;
 import java.util.ArrayList;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,5 +64,10 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         service.substituirCaso(id, casoAtualizado);
         return ResponseEntity.noContent().build();
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CasoJudicial> deletarCaso(@PathVariable Long id){
+        service.deletarCaso(id);
+        return ResponseEntity.noContent().build();
         }
+    }
 

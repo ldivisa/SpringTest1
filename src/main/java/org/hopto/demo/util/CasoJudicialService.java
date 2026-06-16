@@ -38,5 +38,8 @@ public class CasoJudicialService {
         casos.remove(getCasoPorId(id));
         casos.add(casoAtualizado);
     }
+
+    public void deletarCaso(Long id){
+        casos.remove(getCasoPorId(id)); 
 }
     
