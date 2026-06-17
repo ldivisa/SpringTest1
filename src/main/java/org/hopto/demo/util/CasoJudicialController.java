@@ -73,6 +73,7 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         CasoJudicial caso = service.getCasoPorId(ids);
         if (caso != null) {
             double custoFinalizado = caso.finalizarCusto(casoAtualizado.getCusto(), casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
+            System.out.println("Custo finalizado: " + custoFinalizado);
             casoAtualizado = new CasoJudicial(caso.getId(), custoFinalizado, casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
             service.substituirCaso(ids, casoAtualizado);
             return ResponseEntity.ok(casoAtualizado);

@@ -1,5 +1,7 @@
 package org.hopto.demo.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class CasoJudicial {
     private long id;
@@ -8,8 +10,8 @@ public class CasoJudicial {
     private double custo;
     private String estado;
     private int anoJulgamento;
-    private CustoJudicial custoJudicial;
-    private TaxaJudicial taxaJudicial;  
+    private CustoJudicial custoJudicial = new CustoJudicial() ;
+    private TaxaJudicial taxaJudicial = new TaxaJudicial();  
     
 
 public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
@@ -18,7 +20,7 @@ public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
     this.estado = estado;
     this.anoJulgamento = anoJulgamento;
 }
-
+@Autowired
 public double finalizarCusto(double custo, String estado, int anoJulgamento) {
     this.custo = custo;
     this.estado = estado;
@@ -34,7 +36,7 @@ public double finalizarCusto(double custo, String estado, int anoJulgamento) {
     public double getCusto() { return custo; }
     public String getEstado() { return estado; }
     public int getAnoJulgamento() { return anoJulgamento; }
- 
+    
 
     // toString (Essencial se você estiver usando System.out.println)
     @Override
