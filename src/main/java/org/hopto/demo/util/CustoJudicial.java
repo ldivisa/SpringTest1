@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustoJudicial {
-
     public CustoJudicial(){
         }
 

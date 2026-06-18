@@ -2,7 +2,6 @@ package org.hopto.demo.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,25 +11,35 @@ public class CasoJudicialService {
     
     
     public CasoJudicialService() {
-        casos = new ArrayList<CasoJudicial>(Arrays.asList(
-            new CasoJudicial(1000.0, "RJ", 2111), 
-            new CasoJudicial(2000.0, "SP", 2005),
-            new CasoJudicial(3000.0, "MG", 1995) ,
-            new CasoJudicial(4000.0, "BA", 2015)           
+        casos = new ArrayList<>(Arrays.asList(
+            new CasoJudicial(1,1000.0, "RJ", 2111), 
+            new CasoJudicial(2,2000.0, "SP", 2005),
+            new CasoJudicial(3,3000.0, "MG", 1995) ,
+            new CasoJudicial(4,4000.0, "BA", 2015)           
         
         ));
     }
     public ArrayList<CasoJudicial> getTodosOsCasos() {
-        casos = new ArrayList<CasoJudicial>(Arrays.asList(
-            new CasoJudicial(1000.0, "RJ", 2111), 
-            new CasoJudicial(2000.0, "SP", 2005),
-            new CasoJudicial(3000.0, "MG", 1995) ,
-            new CasoJudicial(4000.0, "BA", 2015)           
-   
-        )
-        );
               return casos;
+     }
+
+    public CasoJudicial getCasoPorId(Long id) {
+        return casos.stream()
+                    .filter(caso -> caso.getId()==(id))
+                    .findFirst()
+                    .orElse(null);           
     }
     
-	
+    public void adicionarCaso(CasoJudicial caso){
+         casos.add(caso);
+    }   
+
+    public void substituirCaso(Long id, CasoJudicial casoAtualizado){
+        casos.remove(getCasoPorId(id));
+        casos.add(casoAtualizado);
+    }
+
+    public void deletarCaso(Long ids){
+        casos.remove(getCasoPorId(ids)); 
+}
 }
