@@ -10,9 +10,8 @@ public class CasoJudicial {
     
 @Autowired
 public CasoJudicial(double custo, String estado, int anoJulgamento) {
-    private CustoJudicial custoJudicial;
-    private TaxaJudicial taxaJudicial;  
-
+    private final CustoJudicial custoJudicial;
+    private final TaxaJudicial taxaJudicial;  
     this.custo = custo;
     this.estado = estado;
     this.anoJulgamento = anoJulgamento;
