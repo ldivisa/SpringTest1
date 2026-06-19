@@ -79,5 +79,5 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         } else {
             return ResponseEntity.notFound().build();
         }   
-    }
+    }}
 
