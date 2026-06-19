@@ -3,7 +3,7 @@ package org.hopto.demo.util;
 import java.net.URI;
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,7 +73,7 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         CasoJudicial caso = service.getCasoPorId(ids);
         if (caso != null) {
             double custoFinalizado = caso.finalizarCusto(casoAtualizado.getCusto(), casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
-            casoAtualizado = new CasoJudicial(caso.getId(), custoFinalizado, casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
+            casoAtualizado = new CasoJudicial(new CustoJudicial(), new TaxaJudicial(), caso.getId(), custoFinalizado, casoAtualizado.getEstado(), casoAtualizado.getAnoJulgamento());
             service.substituirCaso(ids, casoAtualizado);
             return ResponseEntity.ok(casoAtualizado);
         } else {

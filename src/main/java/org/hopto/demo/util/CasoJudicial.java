@@ -2,6 +2,7 @@ package org.hopto.demo.util;
 
 import org.springframework.stereotype.Component;
 
+@Component
 public class CasoJudicial {
     private long id;
     private double valor;
@@ -15,9 +16,9 @@ public class CasoJudicial {
     public CasoJudicial() {
     }
   
-public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
-    
-    
+public CasoJudicial(CustoJudicial custoJudicial, TaxaJudicial taxaJudicial, long id, double custo, String estado, int anoJulgamento) {
+    this.custoJudicial = custoJudicial;
+    this.taxaJudicial = taxaJudicial;
     this.id=id;
     this.custo = custo;
     this.estado = estado;
