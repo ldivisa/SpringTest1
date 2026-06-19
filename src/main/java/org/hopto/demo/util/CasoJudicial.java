@@ -10,12 +10,11 @@ public class CasoJudicial {
     private double custo;
     private String estado;
     private int anoJulgamento;
-    private CustoJudicial custoJudicial = new CustoJudicial() ;
-    private TaxaJudicial taxaJudicial = new TaxaJudicial();  
     
-
-public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
-    this.id=id;
+@Autowired
+public CasoJudicial(double custo, String estado, int anoJulgamento) {
+    private final CustoJudicial custoJudicial;
+    private final TaxaJudicial taxaJudicial;  
     this.custo = custo;
     this.estado = estado;
     this.anoJulgamento = anoJulgamento;
