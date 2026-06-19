@@ -1,6 +1,5 @@
 package org.hopto.demo.util;
 
-
 public class CasoJudicial {
     private long id;
     private double valor;
@@ -9,10 +8,14 @@ public class CasoJudicial {
     private String estado;
     private int anoJulgamento;
     private CustoJudicial custoJudicial;
-    private TaxaJudicial taxaJudicial;  
+    private TaxaJudicial taxaJudicial;
     
-
+    public CasoJudicial() {
+    }
+    
 public CasoJudicial(long id, double custo, String estado, int anoJulgamento) {
+    this.custoJudicial = new CustoJudicial();
+    this.taxaJudicial = new TaxaJudicial();
     this.id=id;
     this.custo = custo;
     this.estado = estado;

@@ -3,6 +3,7 @@ package org.hopto.demo.util;
 import java.net.URI;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class CasoJudicialController {
     
     private final CasoJudicialService service;
 
-
+@Autowired
 public CasoJudicialController(CasoJudicialService service) {
         this.service = service;
     }
