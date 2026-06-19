@@ -12,15 +12,16 @@ public class CasoJudicialService {
     
     public CasoJudicialService() {
         casos = new ArrayList<>(Arrays.asList(
-            new CasoJudicial(1,1000.0, "RJ", 2111), 
-            new CasoJudicial(2,2000.0, "SP", 2005),
-            new CasoJudicial(3,3000.0, "MG", 1995) ,
-            new CasoJudicial(4,4000.0, "BA", 2015)           
+            new CasoJudicial(1,1000.0, "RJ", 2001), 
+            new CasoJudicial(2,2000.0, "SP", 2002),
+            new CasoJudicial(3,3000.0, "MG", 2003) ,
+            new CasoJudicial(4,4000.0, "BA", 2004)           
         
         ));
     }
     public ArrayList<CasoJudicial> getTodosOsCasos() {
-              return casos;
+        casos.sort((c1, c2) -> Long.compare(c1.getId(), c2.getId()))    ;      
+        return casos;
      }
 
     public CasoJudicial getCasoPorId(Long id) {
