@@ -21,7 +21,6 @@ public class CasoJudicialController {
     
     private final CasoJudicialService service;
 
-@Autowired
 public CasoJudicialController(CasoJudicialService service) {
         this.service = service;
     }
