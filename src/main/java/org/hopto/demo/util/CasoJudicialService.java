@@ -2,7 +2,6 @@ package org.hopto.demo.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,12 +14,13 @@ public class CasoJudicialService {
             new CasoJudicial(new CustoJudicial(),new TaxaJudicial(),1,1000.0, "RJ", 2111), 
             new CasoJudicial(new CustoJudicial(),new TaxaJudicial(),2,2000.0, "SP", 2005),
             new CasoJudicial(new CustoJudicial(),new TaxaJudicial(),3,3000.0, "MG", 1995) ,
-            new CasoJudicial(new CustoJudicial(),new TaxaJudicial(),    4,4000.0, "BA", 2015)           
+            new CasoJudicial(new CustoJudicial(),new TaxaJudicial(),4,4000.0, "BA", 2015)           
         
         ));
     }
     public ArrayList<CasoJudicial> getTodosOsCasos() {
-              return casos;
+        casos.stream().sorted();
+        return casos;
      }
 
     public CasoJudicial getCasoPorId(Long id) {
