@@ -23,9 +23,11 @@ public class WebSecurityConfig {
 @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 // Specific rule: /api/casos/** requires ROLE_USER
                 .requestMatchers("/api/casos/**").hasRole("USER")
+                //.requestMatchers("/api/casos/**").permitAll()
                 
                 // Specific rule: /api/arquivos/** requires ROLE_ADMIN
                 .requestMatchers("/api/arquivos/**").hasRole("ADMIN")
@@ -35,6 +37,7 @@ public class WebSecurityConfig {
             )
             // Enable HTTP Basic Authentication
             .httpBasic(customizer -> {}); 
+            
 
         return http.build();
     }

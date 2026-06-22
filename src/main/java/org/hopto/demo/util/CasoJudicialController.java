@@ -3,7 +3,6 @@ package org.hopto.demo.util;
 import java.net.URI;
 import java.util.ArrayList;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +18,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 public class CasoJudicialController {
     
+    private final CasoJudicial casoJudicial;
     private final CasoJudicialService service;
 
-public CasoJudicialController(CasoJudicialService service) {
+public CasoJudicialController(CasoJudicialService service, CasoJudicial casoJudicial) {
         this.service = service;
+        this.casoJudicial = casoJudicial;
     }
 
 @RequestMapping(value = "/api/casos", method = RequestMethod.GET)
@@ -41,20 +42,22 @@ public ResponseEntity<CasoJudicial> getCasoPorId(@PathVariable Long id) {
     }
 @RequestMapping(value = "/api/casos", method = RequestMethod.POST)
 public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso) {
-    if (caso == null) {
+    if (caso == null) 
             return ResponseEntity.badRequest().build();
-        }   
-
-    URI locationUri = ServletUriComponentsBuilder
+        
+     if (service.existe(caso))
+        {   System.out.print("Caso Duplicado!");
+            return ResponseEntity.badRequest().build();
+        } 
+        URI locationUri = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(caso.getId())
             .toUri();  
-        service.adicionarCaso(caso);
-        //return ResponseEntity.status(HttpStatus.CREATED).body(caso);
+            service.adicionarCaso(caso);
         return ResponseEntity.created(locationUri).body(caso);
        }
-
+    
     @RequestMapping(value = "/api/casos/{id}", method = RequestMethod.PUT)  
     public ResponseEntity<CasoJudicial> atualizarCaso(@PathVariable Long id,@RequestBody CasoJudicial casoAtualizado){
         service.substituirCaso(id, casoAtualizado);
@@ -79,5 +82,8 @@ public ResponseEntity<CasoJudicial> adicionarCaso(@RequestBody CasoJudicial caso
         } else {
             return ResponseEntity.notFound().build();
         }   
-    }}
+    }
+}
+
+
 

@@ -42,4 +42,15 @@ public class CasoJudicialService  {
     public void deletarCaso(Long ids){
         casos.remove(getCasoPorId(ids)); 
 }
-}
+        public boolean existe(CasoJudicial novoCaso) {
+                boolean resultado = casos.stream().anyMatch(caso -> caso.getId()==(novoCaso.getId()));
+                System.out.println(resultado);
+                return resultado;
+                
+         
+        }
+
+                    
+    }
+
+
