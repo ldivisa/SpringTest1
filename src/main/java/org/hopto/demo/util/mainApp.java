@@ -1,6 +1,5 @@
 package org.hopto.demo.util;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
