@@ -24,7 +24,7 @@ public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws E
         .requestMatchers(new AntPathRequestMatcher("/api/arquivos/**"))
         .hasRole("user")
         .requestMatchers(new AntPathRequestMatcher("/"))
-        .permitAll().
+        .permitAll()
         .anyRequest()
         .authenticated());
     http.oauth2ResourdeServer((oauth2) -> oauth2
@@ -32,7 +32,7 @@ public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws E
     http.oauth2Login(Customizer.withDefaults())
         .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
     return http.build();
-    )
+    
 
 
 }
