@@ -44,7 +44,7 @@ public class CasoJudicialService  {
 }
         public boolean existe(CasoJudicial novoCaso) {
                 boolean resultado = casos.stream().anyMatch(caso -> caso.getId()==(novoCaso.getId()));
-                System.out.println(resultado);
+               //Sstem.out.println(resultado);
                 return resultado;
                 
          
