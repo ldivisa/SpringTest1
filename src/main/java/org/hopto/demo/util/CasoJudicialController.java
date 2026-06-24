@@ -18,12 +18,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 public class CasoJudicialController {
     
-    private final CasoJudicial casoJudicial;
+
     private final CasoJudicialService service;
 
 public CasoJudicialController(CasoJudicialService service, CasoJudicial casoJudicial) {
         this.service = service;
-        this.casoJudicial = casoJudicial;
+
     }
 
 @RequestMapping(value = "/api/casos", method = RequestMethod.GET)
