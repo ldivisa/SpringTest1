@@ -2,6 +2,8 @@ package org.hopto.demo.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -21,13 +23,13 @@ public class KeycloakSecurityConfig {
 @Bean
 public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(auth-> auth
-        .requestMatchers(new AntPathRequestMatcher("/api/arquivos/**"))
+        .requestMatchers("/api/arquivos/**")
         .hasRole("user")
-        .requestMatchers(new AntPathRequestMatcher("/"))
+        .requestMatchers("/")
         .permitAll()
         .anyRequest()
         .authenticated());
-    http.oauth2ResourdeServer((oauth2) -> oauth2
+    http.oauth2ResourceServer((oauth2) -> oauth2
         .jwt(Customizer.withDefaults()));
     http.oauth2Login(Customizer.withDefaults())
         .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));

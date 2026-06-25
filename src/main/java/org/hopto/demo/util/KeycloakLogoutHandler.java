@@ -14,16 +14,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class KeycloakLogoutHandler implements LogoutHandler{
+    
     private static final Logger logger = LoggerFactory.getLogger(KeycloakLogoutHandler.class);
     private final RestTemplate restTemplate;
 
-    public KeycloakLogoutHandler(RestTemplate restTemplate){
+     public KeycloakLogoutHandler(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
-    }
+    } 
+    
 
     @Override
-    public void logout(HttpServletRequest request, HttpServletResponse response, 
-        Authentication auth) {
+    public void logout(HttpServletRequest request, HttpServletResponse response, Authentication auth) {
             logoutFromKeycloak((OidcUser) auth.getPrincipal());
         }
 
@@ -31,7 +32,7 @@ public class KeycloakLogoutHandler implements LogoutHandler{
         String endSessionEndpoint = user.getIssuer() + "/protocol/openid-connect/logout";
         UriComponentsBuilder builder = UriComponentsBuilder
             .fromUriString(endSessionEndpoint)
-            .queryParam("id_token_hint", getIdToken().getTokenValue());
+            .queryParam("id_token_hint", user.getIdToken().getTokenValue());
 
         ResponseEntity<String> logoutResponse = restTemplate.getForEntity(
             builder.toUriString(), String.class);

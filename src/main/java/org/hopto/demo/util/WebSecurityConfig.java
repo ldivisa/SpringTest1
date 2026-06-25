@@ -18,7 +18,7 @@ public class WebSecurityConfig {
             .and()
         .withUser("admin").roles("ADMIN").password("{noop}1980");
     }
-@Bean
+/* @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
@@ -39,7 +39,7 @@ public class WebSecurityConfig {
 
         return http.build();
     }
-    }
+ */    }
     
 
 /* 
