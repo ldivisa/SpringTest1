@@ -23,7 +23,7 @@ public class KeycloakSecurityConfig {
 @Bean
 public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(auth-> auth
-        .requestMatchers("/api/arquivos/**")
+        .requestMatchers("/api/casos")
         .hasRole("user")
         .requestMatchers("/")
         .permitAll()
