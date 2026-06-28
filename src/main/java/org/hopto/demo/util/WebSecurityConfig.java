@@ -1,14 +1,19 @@
 package org.hopto.demo.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig { 
+    private final KeycloakLogoutHandler keycloakLogoutHandler = new KeycloakLogoutHandler(null);
 @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -16,7 +21,7 @@ public class WebSecurityConfig {
             .and()
         .withUser("admin").roles("ADMIN").password("{noop}1980");
     }
-/* @Bean
+ /* @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
@@ -26,7 +31,6 @@ public class WebSecurityConfig {
                 //.requestMatchers("/api/casos/**").permitAll()
                 
                 // Specific rule: /api/arquivos/** requires ROLE_ADMIN
-                .requestMatchers("/api/arquivos/**").hasRole("ADMIN")
                 
                 // General rule: All other requests require authentication
                 .anyRequest().authenticated()
@@ -36,11 +40,29 @@ public class WebSecurityConfig {
             
 
         return http.build();
+    } */
+    
+    @Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .securityMatcher("/api/casos") // Matches everything else not caught by previous chains
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/casos").hasRole("user")
+            .anyRequest().authenticated()
+        );
+        http.oauth2ResourceServer((oauth2) -> oauth2
+            .jwt(Customizer.withDefaults()));
+        http.oauth2Login(Customizer.withDefaults())
+            .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
+        return http.build();
     }
- */    }
+    
+}
+    
+    
     
 
-/* 
+/*
 Key Fixes Explained
 Return Type: Changed public HttpSecurity to public SecurityFilterChain. The bean must be the built chain. 
 Chaining Syntax:

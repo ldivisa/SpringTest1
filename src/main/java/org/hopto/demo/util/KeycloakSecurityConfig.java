@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableWebSecurity
 public class KeycloakSecurityConfig {
         private static final String GROUPS = "groups";
@@ -20,22 +20,18 @@ public class KeycloakSecurityConfig {
             this.keycloakLogoutHandler = keycloakLogoutHandler;
         }
 
-@Bean
-public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(auth-> auth
-        .requestMatchers("/api/casos")
-        .hasRole("user")
-        .requestMatchers("/")
-        .permitAll()
-        .anyRequest()
-        .authenticated());
-    http.oauth2ResourceServer((oauth2) -> oauth2
-        .jwt(Customizer.withDefaults()));
-    http.oauth2Login(Customizer.withDefaults())
-        .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
-    return http.build();
-    
-
-
-}
-}
+    @Bean
+    public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
+        http
+            .securityMatcher("/api/casos/**") // Restrict to API requests
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/casos/**")
+                .permitAll().anyRequest().authenticated()
+            );
+        http.oauth2ResourceServer((oauth2) -> oauth2
+            .jwt(Customizer.withDefaults()));
+        http.oauth2Login(Customizer.withDefaults())
+            .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
+        return http.build();
+    }
+    }
