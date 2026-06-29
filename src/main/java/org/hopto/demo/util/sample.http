@@ -1,0 +1,7 @@
+## GET Hello ##
+
+GET http://127.0.0.1:8082/api/casos
+
+## GET arquivos ##
+GET http://127.0.0.1:8082/api/arquivos
+
